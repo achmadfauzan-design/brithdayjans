@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Happy My Birthday !</title>
+	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--primary: #add8e6;
+			--secondary: #add8e6;
+			--dark: #add8e6;
+			--darker: #fff;
+		}
+		
+		body {
+			font-family: 'Quicksand', sans-serif;
+			background-color: var(--darker);
+			color: #e2e8f0;
+			overflow-x: hidden;
+		}
+		
+		.loading-screen {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(135deg, var(--darker), var(--dark));
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			z-index: 9999;
+			transition: opacity 0.5s ease-out;
+		}
+		
+		.loader {
+			width: 50px;
+			height: 50px;
+			border: 5px solid rgba(173, 216, 230, 1);
+			border-radius: 50%;
+			border-top: 5px solid var(--primary);
+			animation: spin 1s linear infinite;
+		}
+		
+		@keyframes spin {
+			0% { transform: rotate(0deg); }
+			100% { transform: rotate(360deg); }
+		}
+		
+		.hero {
+					background: -webkit-linear-gradient(top left, rgba(0, 0, 139), rgba(0, 0, 139), rgba(0, 0, 139));
+					background: -moz-linear-gradient(top left, rgba(0, 0, 139,0.8), rgba(0, 0, 139), rgba(157,0, 255));
+					background: -o-linear-gradient(top left, rgba(0, 0, 139,0.8), rgba(0, 0, 139), rgba(157,0, 255));
+					background: linear-gradient(to bottom right, rgba(0,0,139,0.8),rgba(0, 0, 139), rgba(157,0,255));,
+						url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="40" fill="%23ec4899" opacity="0.1"/></svg>');
+					background-size: cover;
+					background-position: center;
+					min-height: 100vh;
+					display: flex;
+					align-items: center;
+					position: relative;
+					overflow: hidden;
+				}
+		
+		.hero::before {
+			content: '';
+			position: absolute;
+			top: -50%;
+			left: -50%;
+			width: 200%;
+			height: 200%;
+			background: radial-gradient(circle at center, transparent 30%, var(--primary) 150%);
+			opacity: 0.1;
+			animation: pulse 15s infinite linear;
+		}
+		
+		@keyframes pulse {
+			0% { transform: scale(0.8); opacity: 0.1; }
+			50% { transform: scale(1.2); opacity: 0.15; }
+			100% { transform: scale(0.8); opacity: 0.1; }
+		}
+		
+		.glass {
+			background:rgba(0,0,139,0.8);
+			backdrop-filter: blur(10px);
+			border: 1px solid rgba(236, 72, 153, 0.2);
+			transition: all 0.3s ease;
+		}
+		
+		.glass:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 15px 30px rgba(173,216,230.1);
+			border-color: rgba(236, 72, 153, 0.4);
+		}
+		
+		.cursive {
+			font-family: 'Pacifico', cursive;
+		}
+		
+		.elegant {
+			font-family: 'Playfair Display', serif;
+		}
+		
+		.gradient-text {
+			background: linear-gradient(90deg, lime, lime, lime);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+		
+		.celebrate-btn {
+			background: linear-gradient(90deg, blue, lime);
+			transition: all 0.3s ease;
+			box-shadow: 0 4px 15px rgba(0,0,139,0.8)
+		}
+		
+		.celebrate-btn:hover {
+			transform: translateY(-3px) scale(1.05);
+			box-shadow: 0 8px 25px rgba(173,216,230.1)
+		}
+		
+		.floating {
+			animation: float 6s ease-in-out infinite;
+		}
+		
+		@keyframes float {
+			0% { transform: translateY(0px); }
+			50% { transform: translateY(-20px); }
+			100% { transform: translateY(0px); }
+		}
+		
+		.confetti {
+			position: fixed;
+			width: 10px;
+			height: 10px;
+			background-color: var(--primary);
+			opacity: 0.8;
+			z-index: 1000;
+			animation: fall linear forwards;
+		}
+		
+		@keyframes fall {
+			to {
+				transform: translateY(100vh) rotate(720deg);
+				opacity: 0;
+			}
+		}
+		
+		.pattern-bg {
+			background: 
+					background: -webkit-linear-gradient(top left, rgba(0, 0, 139), rgba(0, 0, 139), rgba(0, 0, 139));
+	background: -moz-linear-gradient(top left, rgba(0, 0, 139, 0.8), rgba(0, 0, 139), rgba(157, 0, 255));
+	background: -o-linear-gradient(top left, rgba(0, 0, 139, 0.8), rgba(0, 0, 139), rgba(157, 0, 255));
+	background: linear-gradient(to bottom right, rgba(0, 0, 139, 0.8), rgba(0, 0, 139), rgba(157, 0, 255));
+	,
+			background-color: var(--darkner);
+		}
+		
+		.icon-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+			gap: 1.5rem;
+		}
+		
+		.icon-item {
+			transition: all 0.3s ease;
+		}
+		
+		.icon-item:hover {
+			transform: translateY(-5px) scale(1.05);
+			box-shadow: 0 10px 20px rgba(0,0,139,0.8);
+		}
+		
+		.message-box {
+			position: relative;
+			overflow: hidden;
+			transition: all 0.3s ease;
+		}
+		
+		.message-box:hover {
+			transform: translateY(-5px);
+		}
+		
+		.message-box::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(45deg, rgba(0,0,139,0.8), rgba(0,0,139,0.8));
+			z-index: -1;
+		}
+		
+		.fade-in {
+			opacity: 0;
+			transform: translateY(20px);
+			transition: opacity 0.8s ease, transform 0.8s ease;
+		}
+		
+		.visible {
+			opacity: 1;
+			transform: translateY(0);
+		}
+		
+		.content-section {
+			scroll-margin-top: 100px;
+		}
+		
+		.rotating-card {
+			transition: transform 0.8s ease;
+			transform-style: preserve-3d;
+		}
+		
+		.rotating-card:hover {
+			transform: rotateY(180deg);
+		}
+		
+		.card-front, .card-back {
+			backface-visibility: hidden;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			border-radius: 16px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		
+		.card-back {
+			transform: rotateY(180deg);
+			background: linear-gradient(45deg, blue, #db2777);
+		}
+		
+		.cake-container {
+			position: relative;
+			width: 200px;
+			height: 200px;
+			margin: 0 auto;
+		}
+		
+		.cake {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+			filter: drop-shadow(0 10px 15px rgba(0,0,139,0.8));
+			animation: cakeBounce 3s ease-in-out infinite;
+		}
+		
+		@keyframes cakeBounce {
+			0%, 100% { transform: translateY(0); }
+			50% { transform: translateY(-10px); }
+		}
+		
+	
+		@keyframes flicker {
+			0%, 100% { transform: translateX(-50%) scale(1); opacity: 1; }
+			50% { transform: translateX(-50%) scale(0.8); opacity: 0.8; }
+		}
+		
+		.nav-link {
+			position: relative;
+			padding: 0.5rem 1rem;
+			transition: all 0.3s ease;
+		}
+		
+		.nav-link::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 0;
+			height: 2px;
+			background: linear-gradient(90deg, navy, blue);
+			transition: width 0.3s ease;
+		}
+		
+		.nav-link:hover::after {
+			width: 100%;
+		}
+		
+		.heart-beat {
+			animation: heartBeat 1.5s ease-in-out infinite;
+		}
+		
+		@keyframes heartBeat {
+			0%, 100% { transform: scale(1); }
+			50% { transform: scale(1.1); }
+		}
+		
+		.balloon {
+			position: absolute;
+			width: 40px;
+			height: 50px;
+			border-radius: 50%;
+			opacity: 0.8;
+			animation: floatUp 15s infinite ease-in;
+		}
+		
+		@keyframes floatUp {
+			0% { transform: translateY(100vh); opacity: 0; }
+			10% { opacity: 1; }
+			90% { opacity: 0.8; }
+			100% { transform: translateY(-100px); opacity: 0; }
+		}
+	</style>
+</head>
+<body class="pattern-bg">
+	<!-- Loading Screen -->
+	<div class="loading-screen">
+		<div class="loader"></div>
+	</div>
+
+	<!-- Navigation -->
+	<nav class="fixed w-full z-50 py-4 px-6 glass">
+		<div class="container mx-auto flex justify-center items-center">
+			<a class="text-2xl cursive gradient-text">Jan'S Birthday</a>
+		 
+		</div>
+	</nav>
+
+	<!-- Hero Section -->
+	<section class="hero">
+		<!-- Balloons -->
+		<div class="balloon" style="background: white; left: 10%; animation-delay: 4s;"></div>
+		<div class="balloon" style="background: deepskyblue; left: 20%; animation-delay: 6s;"></div>
+		<div class="balloon" style="background: white; left: 30%; animation-delay: 5s;"></div>
+		<div class="balloon" style="background: #db2777; left: 70%; animation-delay: 1s;"></div>
+		<div class="balloon" style="background: white; left: 80%; animation-delay: 3s;"></div>
+		<div class="balloon" style="background: deepskyblue; left: 90%; animation-delay: 5s;"></div>
+		
+		<div class="container mx-auto px-6 py-20 flex flex-col md:flex-row items-center">
+			<div class="md:w-1/2 mb-10 md:mb-0">
+				<h1 class="text-5xl md:text-7xl font-bold mb-6 elegant">
+					Happy Birthday, Jan!!! <br>
+				</h1>
+				<p class="text-xl mb-8">
+					Jakarta. 20 September 2006.
+				</p>
+				<p class="text-xl mb-8">
+					Small Businnes Owner
+				</p>
+			
+			</div>
+			<div class="md:w-1/2 flex justify-center">
+				<div class="relative floating">
+					<div class="w-80 h-80 rounded-full overflow-hidden border-8 border-blue-700 shadow-2xl">
+						<img src="foto_ojan.jpeg" 
+							 alt="Princess kebon sayur" class="w-full h-full object-cover">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+			<a href="#about" class="text-3xl text-navy-400">
+				<i class="fas fa-chevron-down"></i>
+			</a>
+		</div>
+	</section>
+
+	<!-- About Section -->
+	<section id="about" class="content-section py-20">
+		<div class="container mx-auto px-6">
+			<h2 class="text-4xl font-bold text-center mb-16 gradient-text elegant">Ucapan dari diri saya sendiri</h2>
+			</div>
+			
+			<div class="glass rounded-2xl p-8 hover:shadow-xl">
+				<p class="text-lg mb-6">
+					Selamat ulang tahun untuk diri sendiri, di usia yang bertambah sekarang semoga di tambahkan segalanya, entah itu rezekinya, ilmunya, kesehatan, dan nikmatnya.
+				</p>
+				<p class="text-lg">
+					semoga allah jadikan diriku lebih baik dari sebelumnya, dan semoga apa yang saya inginkan bisa terwujud. dan semoga apa yang saya impikan akan menjadi kenyataan. 
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- Importance Section -->
+	<section id="importance" class="content-section py-20 bg-gray-900">
+		<div class="container mx-auto px-6">
+			<h2 class="text-4xl font-bold text-center mb-16 gradient-text elegant">Ucapan dari orang terdekat</h2>
+			
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+				<div class="glass rounded-2xl p-8 hover:shadow-xl">
+					<h3 class="text-2xl font-bold mb-4 elegant">Dari keluarga☺️</h3>
+					<p class="text-lg mb-6">
+						"Selamat ulang tahun kakak...Semoga terus menjadi anak soleh dan berbakti kepada orang tua. Buat orang tua kamu bangga atas pencapaian kamu, dan semoga bisa menjadi orang yang berhasil.... biar bisa nyenengin orang tua
+					</p>
+				</div>
+				
+				<div class="glass rounded-2xl p-8 hover:shadow-xl">
+					<h3 class="text-2xl font-bold mb-4 elegant">dari sang kekasih</h3>
+					<p class="text-lg mb-6">
+						tunggu dia kasih ucapan.
+					</p>
+				</div>
+			</div>
+			
+			<div class="glass rounded-2xl p-8 hover:shadow-xl">
+				<h3 class="text-2xl font-bold mb-4 text-center elegant">Dari Sobat Eug</h3>
+				<p class="text-lg text-center max-w-3xl mx-auto">
+					tungggu perwakilan brigez
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- Message Section -->
+	<section id="message" class="content-section py-20">
+		<div class="container mx-auto px-6">
+			<h2 class="text-4xl font-bold text-center mb-16 gradient-text elegant">"MOTIVASI DARI SAYA"</h2>
+			
+			<div class="message-box glass rounded-2xl p-8 md:p-12 max-w-4xl mx-auto hover:shadow-xl">
+				<p class="text-xl mb-6">
+					"Perjalanan sukses dimulai dengan langkah pertama, dan seringkali diikuti dengan banyak tantangan. Namun, itu adalah bagian dari proses."
+				</p>
+				<p class="text-xl mb-6">
+					"Jadilah orang yang memiliki keingintahuan yang tinggi, karna orang yang memiliki pengetahuan lebih tinggi maka orang itu suatu saat akan berguna"
+				</p>
+				<p class="text-xl mb-6">
+					"Kesuksesan bukan hanya tentang seberapa banyak uang yang Anda hasilkan, tetapi tentang dampak positif yang Anda buat. Karna dengan harta yang banyak kita akan bisa berbagi untuk lebih banyak orang."
+				</p>
+			</div>
+			
+			<div class="text-center mt-12">
+				   <button id="celebration-btn" class="celebrate-btn text-white px-8 py-4 rounded-full font-bold text-lg">
+					Klik disini🎉 <i class="fas fa-birthday-cake ml-2"></i>
+				</button>
+			</div>
+		</div>
+	</section>
+
+	<!-- Cake Section -->
+	<section class="py-20 bg-gray-900">
+		<div class="container mx-auto px-6 text-center">
+			<h2 class="text-4xl font-bold mb-16 gradient-text elegant">MY ALBUM</h2>
+			
+			
+				<img src="dadmom.jpeg" 
+					 alt="foto" class="dad">
+			</div>  
+		</div>
+	</section>
+
+	<!-- User Card Section -->
+	<section class="py-20">
+		<div class="container mx-auto px-6">
+			<h2 class="text-4xl font-bold text-center mb-16 gradient-text elegant">Satu lagi dari pacar saya</h2>
+			
+			<div class="flex justify-center">
+				<div class="w-64 h-80 mx-10 rotating-card">
+					<div class="card-front glass rounded-2xl p-6 shadow-xl flex flex-col items-center justify-center">
+						<div class="w-24 h-24 rounded-full overflow-hidden border-4 border-blue-500 mb-4">
+							<img src="foto_diana.jpeg" 
+								 alt="diana" class="w-full h-full object-cover">
+						</div>
+						<h3 class="text-2xl font-bold mb-2 elegant">Princess Kebon Sayur</h3>
+						<p class="text-blue-400">Sang Kekasih</p>
+						<p class="text-center mt-4">Klik Untuk Putar</p>
+					</div>
+					<div class="card-back rounded-2xl p-6 flex flex-col items-center justify-center">
+						<i class="fas fa-heart text-5xl text-white mb-4 heart-beat"></i>
+						<p class="text-pink text-center text-xl">tunggu dia kasih ucapan pendek Happy Birthday!</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer class="py-12 bg-gray-900">
+		<div class="container mx-auto px-6">
+			<div class="flex flex-col items-center">
+				<h3 class="text-4x2 font-bold text-center mb-16 gradient-text italic">SELAMAT & SUKSES SELALU</h3>
+				<div class="flex space-x-6 mb-6">
+					<i class="fas fa-cake text-3xl text-blue-500 heart-beat"></i>
+					<i class="fas fa-cake text-3xl text-blue-500 heart-beat" style="animation-delay: 0.2s;"></i>
+					<i class="fas fa-cake text-3xl text-blue-500 heart-beat" style="animation-delay: 0.4s;"></i>
+				</div>
+				<p class="text-gray-400">project perdana</p>
+				<p class="text-gray-400">achmad fauzan syaefudin</p>
+				<p class="text-gray-400">From Grub: Python Programmer Beginners</p>
+			</div>
+		</div>
+	</footer>
+
+	<!-- Confetti Container -->
+	<div id="confetti-container" class="fixed inset-0 pointer-events-none z-40 overflow-hidden hidden"></div>
+
+	<script>
+		// Wait for page to load
+		window.addEventListener('load', function() {
+			const loadingScreen = document.querySelector('.loading-screen');
+			setTimeout(() => {
+				loadingScreen.style.opacity = '0';
+				setTimeout(() => {
+					loadingScreen.style.display = 'none';
+				}, 500);
+			}, 1500);
+			
+			// Add fade-in animation to sections on scroll
+			const fadeElements = document.querySelectorAll('.content-section > div');
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('visible');
+					}
+				});
+			}, { threshold: 0.1 });
+			
+			fadeElements.forEach(el => {
+				el.classList.add('fade-in');
+				observer.observe(el);
+			});
+		});
+
+		// Confetti celebration
+		function createConfetti() {
+			const confettiContainer = document.getElementById('confetti-container');
+			confettiContainer.classList.remove('hidden');
+			
+			const colors = ['#ec4899', '#f472b6', '#f9a8d4', '#fbcfe8', '#fdf2f8'];
+			
+			for (let i = 0; i < 150; i++) {
+				const confetti = document.createElement('div');
+				confetti.className = 'confetti';
+				confetti.style.left = Math.random() * 100 + 'vw';
+				confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+				confetti.style.width = (Math.random() * 10 + 5) + 'px';
+				confetti.style.height = (Math.random() * 10 + 5) + 'px';
+				confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+				confettiContainer.appendChild(confetti);
+				
+				// Remove confetti after animation completes
+				setTimeout(() => {
+					confetti.remove();
+				}, 5000);
+			}
+		}
+		
+		document.getElementById('celebration-btn').addEventListener('click', createConfetti);
+		
+		// Smooth scrolling for navigation links
+		document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+			anchor.addEventListener('click', function (e) {
+				e.preventDefault();
+				const target = document.querySelector(this.getAttribute('href'));
+				if (target) {
+					target.scrollIntoView({
+						behavior: 'smooth'
+					});
+				}
+			});
+		});
+	</script>
+</body>
+</html>
