@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Album</title>
+  <style>
+    body {
+      margin: 0;
+      height: 500vh;
+      background: linear-gradient(135deg, #00008B, #8A2BE2);
+      background-attachment: fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+  h1 {
+      position: fixed;
+      top: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: lime;
+      font-family: Arial, sans-serif;
+      padding: 2px 10px;   /* atur biar muat */
+      border: 2px solid lime;
+      border-radius: 50px;
+      background-color: rgba(0,0,0,0.4);
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+      display: inline-block; 
+      white-space: nowrap;
+      }
+   h2 {
+      background-color: transparent; /* warna biru */
+      color: lime;              /* teks putih */
+      padding: 20px 40px;
+      text-align: center;
+      background-color: transparent;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+      border-radius: ;        /* sudut melengkung */
+      font-family: Arial, sans-serif;
+      display:inline-block;
+   }
+      .album {
+      	margin-top: 90px;
+      	display: flex;
+      	flex-wrap: wrap;
+      	justify-content: center;
+      	gap: 20px;
+      }
+      .foto{
+      	border:5px solid #fff;
+      	border-radius: 15px;
+      	box-shadow: 0 0 15px rgba(0,0,0,0.6);
+      	overflow: hidden;
+      	max-width: 300px;
+      }
+      .foto img{
+      	width: 100%;
+      	height: auto;
+      	display: block;
+      }
+	.glass {
+	  background: rgba(0, 0, 139, 0.8);
+	  backdrop-filter: blur(3px);
+	  border: 1px solid rgba(236, 72, 153, 0.2);
+	  transition: all 0.3s ease;
+	  border-radius: 15px;
+	}
+	
+	.glass:hover {
+	  transform: translateY(-5px);
+	  box-shadow: 0 15px 30px rgba(173, 216, 230.1);
+	  border-color: rgba(236, 72, 153, 0.4);
+	}
+	
+      video {
+      width: 300px;   /* bisa disesuaikan */
+      border-radius: 15px;
+      border: 5px solid #fff;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+      overflow: hidden;
+      max-width: 300px;
+      }
+ </style>
+</head>
+<body>
+<div class="album">
+  	<div class="glass"><div class="foto">
+  		<img src="dadmom.jpeg" alt="moment">
+  		</div>
+  		</div>
+  		
+  		<div class="glass">
+  	<div class="foto">
+  		<img src="fotokecil.jpeg">
+  		</div>
+  	</div>
+  	
+    <div class="glass">
+      <div class="foto">
+       <img src="barengnenek.jpeg">
+         </div>
+         </div>
+         
+         
+     <div class="glass">
+      <div class="foto">
+       <img src="jamet.jpeg">
+        </div>
+        </div>   
+        
+<div class="glass">
+  <div class="foto">
+    <img src="ultah1.jpeg">
+  </div>
+</div>
+
+ 
+<div class="glass">
+  <div class="foto">
+    <img src="ultah2.jpeg">
+  </div>
+</div>
+
+<div class="glass">
+  <div class="foto">
+    <img src="ultah3.jpeg">
+  </div>
+</div>
+
+<div class="glass">
+  <div class="foto">
+    <img src="ultah4.jpeg">
+  </div>
+</div>
+
+<div class="glass">
+  <div class="foto">
+    <img src="ultah5.jpeg">
+  </div>
+</div>
+
+<div class="glass">
+  <div class="foto">
+    <img src="ultah6.jpeg">
+  </div>
+</div>
+
+<div class="glass">
+  <div class="foto">
+    <img src="ultah7.jpeg">
+  </div>
+</div>
+
+<div class="glass">
+  <div class="foto">
+    <img src="ultah8.jpeg">
+  </div>
+</div>
+
+<div class="glass">
+  <div class="foto">
+    <img src="ultah9.jpeg">
+  </div>
+</div>
+
+<div class="glass">
+  <div class="foto">
+    <img src="ultah10.jpeg">
+  </div>
+</div>
+ 
+<div class="glass">
+  <div class="foto">
+    <img src="ultah11.jpeg">
+  </div>
+</div>
+
+<div class="glass">
+  <div class="foto">
+    <img src="ultah12.jpeg">
+  </div>
+</div>
+
+<div class="glass">
+  <div class="foto">
+    <img src="ultah13.jpeg">
+  </div>
+</div>
+
+<div class="glass">
+  <div class="foto">
+    <img src="ultah14.jpeg">
+  </div>
+</div>
+
+<div class="glass">
+  <div class="foto">
+    <img src="ultah15.jpeg">
+  </div>
+</div>
+
+<div class="glass">
+  <div class="foto">
+    <img src="berbagi1.jpeg">
+  </div>
+</div>
+
+<div class="glass">
+  <div class="foto">
+    <img src="berbagi2.png">
+  </div>
+</div>
+<div class="glass">
+<div class="video">
+<video controls poster="poster.png">
+  <source src="vidio.mp4" type="video/mp4">
+</video>
+</div>
+</div>
+
+
+  	<h1>my album</h1>
+  	
+<footer class="py-12 bg-gray-900">
+  <div class="container mx-auto px-6">
+    <div class="flex flex-col items-center">
+      <p= class="text-black-400">&copy; album</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
